@@ -25,13 +25,14 @@ app.use(Cors(corsHandler));
 app.use(errorMiddleware(rootMockPath));
 
 app.use(async (ctx, next) => {
-  const filePath = path.join(rootMockPath, `${trimEnd(ctx.url, "/")}.json`);
+  console.info(ctx.path);
+  const filePath = path.join(rootMockPath, `${trimEnd(ctx.path, "/")}.json`);
 
   try {
     ctx.body = require(filePath);
   } catch (err) {
     throw new Error(
-      "Can't fina any matched mock data, pls make sure you has added mock file below mock floder!"
+      "Can't find any matched mock data, pls make sure you has added mock file below mock folder!"
     );
   }
 });
