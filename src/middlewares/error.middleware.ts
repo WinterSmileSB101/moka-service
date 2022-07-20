@@ -1,6 +1,8 @@
 import { Context, Next } from "koa";
 
-export const errorMiddleware =
+import { MiddlewareFunc } from "./middleware.types";
+
+export const errorMiddleware: MiddlewareFunc =
   (rootMokaPath: string) => (ctx: Context, next: Next) => {
     return next().catch((err) => {
       if (err.code == null) {

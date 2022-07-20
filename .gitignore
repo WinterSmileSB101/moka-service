@@ -1,1 +1,4 @@
 /node_modules
+*.json
+*.zip
+.DS_Store
