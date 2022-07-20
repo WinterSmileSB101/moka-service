@@ -1,8 +1,7 @@
-import Koa, { Context } from "koa";
+import Koa from "koa";
 // import Session from "koa-session";
 // import Router from "koa-router";
 import Cors from "koa2-cors";
-import { isEmpty, trimEnd } from "lodash";
 import path from "path";
 import AddressIP from "ip";
 
@@ -11,6 +10,8 @@ import { MockConfig } from "./config/mock.config";
 import { errorMiddleware } from "./middlewares";
 import { AdditionMappingMiddleware } from "./middlewares/addition-mapping.middleware";
 import { getFilePath } from "./utils";
+import { info } from "fancy-log";
+import { log } from "./utils/log.utils";
 
 const rootDir = __dirname;
 const PORT = 8220;
@@ -29,8 +30,8 @@ const app = new Koa();
 app.use(Cors(corsHandler));
 
 app.use((ctx, next) => {
-  console.info(ctx.path);
-  console.info(ctx.querystring);
+  info(ctx.path);
+  info(ctx.querystring);
 
   return next();
 });
@@ -42,7 +43,7 @@ app.use(AdditionMappingMiddleware(rootMockAdditionMappingPath));
 app.use(async (ctx, next) => {
   const filePath = getFilePath(rootMockPath, ctx.path);
 
-  console.log('target file path: ', filePath);
+  log('target file path: ', filePath);
 
   //const filePathWithQuery = path.join(rootMockPath, `${trimEnd(ctx.path+ctx.query, "/")}.json`)
 

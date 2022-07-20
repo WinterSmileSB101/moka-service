@@ -11,7 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "chalk": "^4.1.0",
     "cross-env": "^7.0.3",
+    "fancy-log": "^2.0.0",
     "ip": "^1.1.8",
     "koa": "^2.13.4",
     "koa-router": "^10.1.1",
@@ -19,9 +21,12 @@
     "koa2-cors": "^2.0.6",
     "lodash": "^4.17.21",
     "nodemon": "^2.0.16",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "simple-node-logger": "^21.8.12"
   },
   "devDependencies": {
+    "@types/chalk": "^2.2.0",
+    "@types/fancy-log": "^2.0.0",
     "@types/ip": "^1.1.0",
     "@types/koa": "^2.13.4",
     "@types/koa-router": "^7.4.4",
